@@ -21,4 +21,6 @@ public interface StuMapper extends BaseMapper<Stu> {
     public int updateStu(Stu stu);
 
     public List<SelectC> selectCourse(String sno, String sname, String sclass,Integer pageFr,Integer pageSize);
+
+    long getSCListCount(String sno, String sname,String sclass);
 }

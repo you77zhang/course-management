@@ -34,6 +34,11 @@ public class StuServiceImpl extends ServiceImpl<StuMapper, Stu> implements IStuS
         return baseMapper.selectCourse(sno,sname,sclass,pageFr,pageSize);
     }
 
+    @Override
+    public long getSCListCount(String sno, String sname,String sclass) {
+        return baseMapper.getSCListCount(sno,sname,sclass);
+    }
+
 
     // @Override
     // public List<SelectC> selectCourse(String sno, String sname, String sclass, Integer pageNo, Integer pageSize) {

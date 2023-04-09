@@ -55,7 +55,8 @@ public class StuController {
                                              @RequestParam(value = "pageSize") Integer pageSize){
 
         List<SelectC> selectCS = stuService.selectCourse(sno, sname, sclass, pageNo, pageSize);
-        long total = stuService.count();
+        long total = stuService.getSCListCount(sno, sname,sclass);
+        // long total = stuService.count();
         Map<String,Object> data = new HashMap<>();
         data.put("total",total);
         data.put("rows",selectCS);

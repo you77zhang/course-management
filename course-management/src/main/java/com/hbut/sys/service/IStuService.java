@@ -18,4 +18,6 @@ public interface IStuService extends IService<Stu> {
 
     boolean updateStu(Stu stu);
     public List<SelectC> selectCourse(String sno,String sname,String sclass,Integer pageNo,Integer pageSize);
+
+    long getSCListCount(String sno, String sname,String sclass);
 }

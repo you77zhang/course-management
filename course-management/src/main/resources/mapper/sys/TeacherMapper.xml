@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbut.sys.mapper.TeacherMapper">
+
+    <select id="getTcList" resultType="com.hbut.sys.entity.tempList.TeachC">
+        select t.tno,t.tname,c.cno,c.cname
+        from teacher t
+        left join course c
+        on t.tno = c.c_tno
+        <where>
+            <if test="tno != null">
+                tno = #{tno}
+            </if>
+            <if test="tname != null">
+                and tname = #{tname}
+            </if>
+        </where>
+        limit #{pageFr},#{pageSize}
+    </select>
+    <select id="getTcListCount" resultType="java.lang.Long">
+        select count(*)
+        from teacher t
+        left join course c
+        on t.tno = c.c_tno
+        <where>
+            <if test="tno != null">
+                tno = #{tno}
+            </if>
+            <if test="tname != null">
+                and tname = #{tname}
+            </if>
+        </where>
+    </select>
+</mapper>

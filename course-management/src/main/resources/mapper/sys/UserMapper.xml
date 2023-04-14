@@ -2,4 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hbut.sys.mapper.UserMapper">
 
+    <select id="getRoleNameByUserId" resultType="java.lang.String">
+        select t1.name
+        from user u
+                 left join
+             (
+                 select ur.*, r.name, r.`desc`
+                 from user_role ur
+                          inner join role r on ur.role_id = r.id
+             ) t1
+             on u.id = t1.user_id
+        where u.id = #{id};
+    </select>
 </mapper>

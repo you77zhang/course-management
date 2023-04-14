@@ -1,5 +1,6 @@
 package com.hbut.sys.service.impl;
 
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.hbut.sys.entity.User;
 import com.hbut.sys.mapper.UserMapper;
@@ -12,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -52,6 +54,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             // 返回数据
             Map<String, Object> data = new HashMap<>();
             data.put("token",key);
+            return data;
+        }
+        return null;
+    }
+
+    @Override
+    public Map<String, Object> getUserInfo(String token) {
+        //根据token获取用户信息
+        Object obj = redisTemplate.opsForValue().get(token);
+        if(obj != null){
+            User user = JSON.parseObject(JSON.toJSONString(obj), User.class);
+            Map<String,Object> data = new HashMap<>();
+            data.put("name",user.getName());
+            data.put("avatar",user.getAvatar());
+            List<String> roleList = this.baseMapper.getRoleNameByUserId(user.getId());
+            data.put("roles",roleList);
             return data;
         }
         return null;

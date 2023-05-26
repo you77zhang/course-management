@@ -39,7 +39,7 @@
         </el-table-column>
         <el-table-column fixed="right" prop="operator" label="操作" align="center" width="200">
           <template slot-scope="scope">
-            <el-button type="primary" @click="editStu(scope.row)" plain>编辑</el-button>
+            <el-button type="primary" @click="editStu(scope.row,scope.$index)" plain>编辑</el-button>
             <el-button type="danger" @click="deleteStu(scope.row)" plain>删除</el-button>
           </template>
         </el-table-column>
@@ -67,7 +67,7 @@
           <el-select v-model="stuModal.ssex" placeholder="请选择班级" autocomplete="off">
             <el-option label="男" value="男"></el-option>
             <el-option label="女" value="女"></el-option>
-            <el-option label="不告诉你"></el-option>
+            <el-option label="不告诉你" value=""></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="学院" :label-width="formLabelWidth">
@@ -134,9 +134,9 @@ export default {
     }
   },
   methods: {
-    editStu(stu) {
+    editStu(stu,index) {
       this.stuModal = stu;
-      localStorage.setItem('obj', JSON.stringify(this.form))
+      this.stuList[index]=JSON.parse(JSON.stringify(stu))
       this.openForm('修改用户');
     },
     deleteStu(stu) {

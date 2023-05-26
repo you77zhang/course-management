@@ -40,7 +40,7 @@
         </el-table-column>
         <el-table-column fixed="right" prop="operator" label="操作" align="center" width="200">
           <template slot-scope="scope">
-            <el-button type="primary" @click="editCourse(scope.row)" plain>编辑</el-button>
+            <el-button type="primary" @click="editCourse(scope.row,scope.$index)" plain>编辑</el-button>
             <el-button type="danger" @click="deleteCourse(scope.row)" plain>删除</el-button>
           </template>
         </el-table-column>
@@ -143,8 +143,9 @@ export default {
     }
   },
   methods: {
-    editCourse(course) {
+    editCourse(course,index) {
       this.courseModal = course;
+      this.courseList[index] = JSON.parse(JSON.stringify(course))
       this.openForm('修改用户');
     },
     deleteCourse(course) {

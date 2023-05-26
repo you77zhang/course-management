@@ -42,7 +42,7 @@
         </el-table-column>
         <el-table-column fixed="right" prop="operator" label="操作" align="center" width="200">
           <template slot-scope="scope">
-            <el-button type="primary" @click="editDivide(scope.row)" plain>编辑</el-button>
+            <el-button type="primary" @click="editDivide(scope.row,scope.$index)" plain>编辑</el-button>
             <el-button type="danger" @click="deleteDivide(scope.row)" plain>删除</el-button>
           </template>
         </el-table-column>
@@ -137,12 +137,13 @@ export default {
     }
   },
   methods: {
-    editDivide(divide){
+    editDivide(divide,index){
       this.divideModal=divide;
-      this.openForm('修改用户');
+      this.divideList[index] = JSON.parse(JSON.stringify(divide))
+      this.openForm('修改分组');
     },
     deleteDivide(divide) {
-      this.$confirm('此操作将永久删除 ' + divide.cname + ' , 是否继续?', '提示', {
+      this.$confirm('此操作将永久删除此分组, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'

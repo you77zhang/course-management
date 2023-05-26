@@ -38,7 +38,7 @@
         </el-table-column>
         <el-table-column fixed="right" prop="operator" label="操作" align="center" width="200">
           <template slot-scope="scope">
-            <el-button type="primary" @click="editTeacher(scope.row)" plain>编辑</el-button>
+            <el-button type="primary" @click="editTeacher(scope.row,scope.$index)" plain>编辑</el-button>
             <el-button type="danger" @click="deleteTeacher(scope.row)" plain>删除</el-button>
           </template>
         </el-table-column>
@@ -67,7 +67,7 @@
           <el-select v-model="teacherModal.tsex" placeholder="请选择班级" autocomplete="off">
             <el-option label="男" value="男"></el-option>
             <el-option label="女" value="女"></el-option>
-            <el-option label="不告诉你"></el-option>
+            <el-option label="不告诉你" value=""></el-option>
           </el-select>
         </el-form-item>
 
@@ -89,6 +89,7 @@
 
 <script>
 import teacherApi from '@/api/teacher'
+import teachCVue from './teachC.vue';
 // import { getList } from '@/api/table';
 
 export default {
@@ -125,8 +126,9 @@ export default {
     }
   },
   methods: {
-    editTeacher(teacher) {
+    editTeacher(teacher,index) {
       this.teacherModal = teacher;
+      this.teacherList[index] = JSON.parse(JSON.stringify(teacher))
       this.openForm('修改用户');
     },
     deleteTeacher(teacher) {

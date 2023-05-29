@@ -2,6 +2,7 @@ package com.hbut.sys.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hbut.common.aop.LogAnnotation;
 import com.hbut.common.vo.Result;
 import com.hbut.sys.entity.tempList.SelectC;
 import com.hbut.sys.entity.Stu;
@@ -29,6 +30,7 @@ public class StuController {
     private IStuService stuService;
 
     @GetMapping("/list")
+    @LogAnnotation(module = "学生",operator = "获取学生列表")
     public Result<Map<String,Object>> getStu(@RequestParam(value = "sno",required = false) String sno,
                                              @RequestParam(value = "sname",required = false) String sname,
                                              @RequestParam(value = "pageNo") Long pageNo,
@@ -64,6 +66,7 @@ public class StuController {
         return Result.success(data);
     }
     @PostMapping
+    @LogAnnotation(module = "学生",operator = "增加学生")
     public Result<?> addStu(@RequestBody Stu stu){
         LambdaQueryWrapper<Stu> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(StringUtils.hasLength(stu.getSno()),Stu::getSno,stu.getSno());

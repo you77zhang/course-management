@@ -7,10 +7,14 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/coursemanagement?serverTimezone=UTC
   redis:
     port: 6379
+
 logging:
   level:
     com.hbut: debug
-
+  file:
+    path: ./logs
+  pattern:
+    file = %d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n
 mybatis-plus:
   global-config:
     db-config:

@@ -12,9 +12,7 @@ logging:
   level:
     com.hbut: debug
   file:
-    path: ./logs
-  pattern:
-    file = %d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n
+    path: D:/code/logs/
 mybatis-plus:
   global-config:
     db-config:

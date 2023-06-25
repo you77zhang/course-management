@@ -86,7 +86,13 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.9</version>
         </dependency>
-
+        
+        <!--文件上传-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.4</version>
+        </dependency>
     </dependencies>
 
     <build>

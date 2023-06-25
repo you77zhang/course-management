@@ -105,8 +105,19 @@ export const constantRoutes = [
         name: 'teachC',
         component: () => import('@/views/sys/teachC'),
         meta: { title: '教师授课查询', icon: 'table' }
-      },
+      }
     ]
+  },
+  {
+    path: '/path',
+    component: Layout,
+    redirect: '/',
+    children: [{
+      path: 'file',
+      name: 'file',
+      component: () => import('@/views/sys/file'),
+      meta: { title: '文件传输', icon: 'table' }
+    }]
   },
 
   // 404 page must be placed at the end !!!

@@ -13,22 +13,6 @@
       <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
       <div class="el-upload__tip" slot="tip">只能上传jpg/png文件,且不超过20Mb</div>
     </el-upload>
-
-
-    <!-- <el-upload action="" multiple  :http-request="fileUpload">
-      <el-button type="primary">Click to upload</el-button>
-      <template #tip>
-        <div class="el-upload__tip">
-          jpg/png files with a size less than 500KB.
-        </div>
-      </template>
-    </el-upload> -->
-
-
-    <!-- <el-upload action :show-file-list="false" :auto-upload="false" :before-upload="beforeUpload" :on-change="fileUpload"
-      style="display: inline-block;">
-      <Button icon="ios-download" type="primary">导入</Button>
-    </el-upload> -->
   </div>
 </template>
 

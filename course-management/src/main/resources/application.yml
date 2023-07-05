@@ -12,6 +12,18 @@ spring:
       enabled: true
       max-file-size: 20MB
       max-request-size: 20MB
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 1476203673@qq.com
+    password: qqntmomixopehjhi
+    default-encoding: UTF-8 # 配置邮件编码
+    properties: 
+      mail:
+        smpt:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+          debug: true
+    from: 1476203673@qq.com
 file:
   upload:
     dir: D:/test

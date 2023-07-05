@@ -1,5 +1,6 @@
 package com.hbut.sys.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hbut.sys.entity.tempList.SelectC;
 import com.hbut.sys.entity.Stu;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -17,7 +18,5 @@ import java.util.List;
 public interface IStuService extends IService<Stu> {
 
     boolean updateStu(Stu stu);
-    public List<SelectC> selectCourse(String sno,String sname,String sclass,Integer pageNo,Integer pageSize);
-
-    long getSCListCount(String sno, String sname,String sclass);
+    public Page<SelectC> selectCourse(Page<SelectC> page,String sno, String sname, String sclass);
 }

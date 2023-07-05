@@ -93,6 +93,13 @@
             <artifactId>commons-fileupload</artifactId>
             <version>1.4</version>
         </dependency>
+
+        <!--邮件发送依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

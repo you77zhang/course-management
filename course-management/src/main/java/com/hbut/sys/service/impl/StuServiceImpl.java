@@ -1,5 +1,6 @@
 package com.hbut.sys.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hbut.sys.entity.tempList.SelectC;
 import com.hbut.sys.entity.Stu;
 import com.hbut.sys.mapper.StuMapper;
@@ -26,18 +27,13 @@ public class StuServiceImpl extends ServiceImpl<StuMapper, Stu> implements IStuS
     }
 
     @Override
-    public List<SelectC> selectCourse(String sno, String sname, String sclass, Integer pageNo,Integer pageSize) {
-        Integer pageFr = (pageNo - 1)*pageSize;
+    public Page<SelectC> selectCourse(Page<SelectC> page,String sno, String sname, String sclass) {
         if(sno=="") sno = null;
         if(sname == "") sname = null;
         if(sclass == "") sclass = null;
-        return baseMapper.selectCourse(sno,sname,sclass,pageFr,pageSize);
+        return baseMapper.selectCourse(page,sno,sname,sclass);
     }
 
-    @Override
-    public long getSCListCount(String sno, String sname,String sclass) {
-        return baseMapper.getSCListCount(sno,sname,sclass);
-    }
 
 
     // @Override

@@ -55,13 +55,14 @@ public class StuController {
                                              @RequestParam(value = "sclass",required = false) String sclass,
                                              @RequestParam(value = "pageNo") Integer pageNo,
                                              @RequestParam(value = "pageSize") Integer pageSize){
-
-        List<SelectC> selectCS = stuService.selectCourse(sno, sname, sclass, pageNo, pageSize);
-        long total = stuService.getSCListCount(sno, sname,sclass);
-        // long total = stuService.count();
+        
+        Page<SelectC> page = new Page<SelectC>(pageNo, pageSize);
+        stuService.selectCourse(page,sno, sname, sclass);
+        // long total = stuService.getSCListCount(sno, sname,sclass);
+        // // long total = stuService.count();
         Map<String,Object> data = new HashMap<>();
-        data.put("total",total);
-        data.put("rows",selectCS);
+        data.put("total",page.getTotal());
+        data.put("rows",page.getRecords());
 
         return Result.success(data);
     }

@@ -22,24 +22,5 @@
             </if>
         </where>
         order by s.sno
-        limit #{pageFr}, #{pageSize};
-    </select>
-    <select id="getSCListCount" resultType="java.lang.Long">
-        select count(*)
-        from stu s
-        left join
-        (select d.*,c.cname from divide d left join course c on d.d_cno = c.cno) b
-        on s.sno = b.d_sno
-        <where>
-            <if test="sno != null">
-                s.sno = #{sno}
-            </if>
-            <if test="sname != null">
-                and s.sname = #{sname}
-            </if>
-            <if test="sclass != null">
-                and s.sclass = #{sclass}
-            </if>
-        </where>
     </select>
 </mapper>
